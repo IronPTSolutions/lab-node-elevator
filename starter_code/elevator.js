@@ -26,8 +26,21 @@ class Elevator {
   }
   _passengersEnter() { }
   _passengersLeave() { }
-  floorUp() { }
-  floorDown() { }
+
+  floorUp() {
+    if (this.floor < this.MAXFLOOR) {
+      this.direction = "up";
+      this.floor++;
+    }
+  }
+
+  floorDown() {
+    if (this.floor > 0) {
+      this.direction = "down";
+      this.floor--;
+    }
+  }
+
   call() { }
 
   log() {
