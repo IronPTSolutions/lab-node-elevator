@@ -1,12 +1,21 @@
+const UPDATE_INTERVAL_MILLIS = 1000;
+
 class Elevator {
   constructor(){
     this.floor = 0;
     this.MAXFLOOR = 10;
     this.requests = [];
     this.direction = "up";
+    this.updateIntervalId = undefined;
   }
 
-  start() { }
+  start() {
+    if (!this.updateIntervalId) {
+      this.updateIntervalId = setInterval(() => {
+        this.update();
+      }, UPDATE_INTERVAL_MILLIS);
+    }
+  }
   stop() { }
   
   update() {
