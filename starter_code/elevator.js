@@ -16,7 +16,10 @@ class Elevator {
       }, UPDATE_INTERVAL_MILLIS);
     }
   }
-  stop() { }
+
+  stop() { 
+    clearInterval(this.updateIntervalId);
+  }
   
   update() {
     this.log();
