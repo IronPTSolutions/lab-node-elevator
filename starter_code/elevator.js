@@ -1,12 +1,10 @@
+const constants = require('./constants.js');
 const Person = require('./person.js');
-
-const UPDATE_INTERVAL_MILLIS = 1000;
 
 class Elevator {
   constructor(){
     this.floor = 0;
-    this.MAXFLOOR = 10;
-    this.direction = "up";
+    this.direction = constants.UP;
     this.updateIntervalId = undefined;
 
     this.waitingList = [];
@@ -18,7 +16,7 @@ class Elevator {
     if (!this.updateIntervalId) {
       this.updateIntervalId = setInterval(() => {
         this.update();
-      }, UPDATE_INTERVAL_MILLIS);
+      }, constants.ELEVATOR_UPDATE_INTERVAL_MILLIS);
     }
   }
 
@@ -65,15 +63,15 @@ class Elevator {
   }
 
   floorUp() {
-    if (this.floor < this.MAXFLOOR) {
-      this.direction = "up";
+    if (this.floor < constants.ELEVATOR_MAX_FLOOR) {
+      this.direction = constants.UP;
       this.floor++;
     }
   }
 
   floorDown() {
     if (this.floor > 0) {
-      this.direction = "down";
+      this.direction = constants.DOWN;
       this.floor--;
     }
   }
